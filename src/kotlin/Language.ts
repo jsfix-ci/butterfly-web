@@ -244,22 +244,7 @@ class CharRangeIterator implements Iterator<string> {
     }
 }
 
-// interface Collection<E> extends Iterable<E> {
-//     readonly size: number; //Why?  Because that's what Array uses, and we conform to Array.
-//     contains(e: E): boolean
-//     containsAll(e: E): boolean
-// }
-// interface MutableCollection<E> extends Collection<E> {
-//     add(element: E): boolean
-//     remove(element: E): boolean
-//     addAll(elements: Collection<E>): boolean
-//     removeAll(elements: Collection<E>): boolean
-//     retainAll(elements: Collection<E>): boolean
-//     clear(): boolean
-// }
-
-import {Observable} from "rxjs";
-import {defer as rxDefer} from "rxjs";
+import { Observable, defer as rxDefer } from "rxjs";
 
 export function doOnSubscribe<T>(observable: Observable<T>, action: (x: any) => void) {
     return rxDefer(() => {

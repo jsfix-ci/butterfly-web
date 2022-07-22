@@ -4,9 +4,8 @@
 import {finalize as rxFinalize, map as rxMap, filter as rxFilter, filter} from 'rxjs/operators'
 import { MutableObservableProperty } from '../observables/MutableObservableProperty'
 import { doOnSubscribe } from '../Kotlin'
-import { Observable} from 'rxjs'
 import { post } from '../delay'
-import {MonoTypeOperatorFunction} from "rxjs/internal/types";
+import { Observable, MonoTypeOperatorFunction } from "rxjs";
 //! Declares com.lightningkite.butterfly.rx.working
 export function xSingleWorking<Element extends any>(this_Working: Observable<Element>, observable: MutableObservableProperty<Boolean>): Observable<Element>{
     return rxFinalize(() => post(() => observable.value = false))(doOnSubscribe(this_Working, (it) => post(() => observable.value = true))) as Observable<Element>;
